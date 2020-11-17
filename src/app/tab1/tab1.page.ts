@@ -7,6 +7,11 @@ import { Component } from '@angular/core';
 })
 export class Tab1Page {
 
+  event:any;
   constructor() {}
 
+  receiveMessage($event){
+    this.event = $event
+    console.log(this.event)
+  }
 }
