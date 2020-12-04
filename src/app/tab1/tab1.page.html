@@ -7,12 +7,7 @@
 </ion-header>
 
 <ion-content>
-  <app-descripcion *ngIf="this.event" [event]="this.event"></app-descripcion>
-  <app-eventos (messageEvent)=receiveMessage($event)></app-eventos>
-  <app-eventos (messageEvent)=receiveMessage($event)></app-eventos>
-  <app-eventos (messageEvent)=receiveMessage($event)></app-eventos>
-  <app-eventos (messageEvent)=receiveMessage($event)></app-eventos>
-  <app-eventos (messageEvent)=receiveMessage($event)></app-eventos>
-  <app-eventos (messageEvent)=receiveMessage($event)></app-eventos>
+  <app-descripcion *ngIf="this.event" [e]="this.event"></app-descripcion>
+  <app-eventos *ngFor="let e of eventList | async" [e]="e" (messageEvent)=receiveMessage($event)></app-eventos>
   <app-explore-container name="Tab 1 page"></app-explore-container>
 </ion-content>

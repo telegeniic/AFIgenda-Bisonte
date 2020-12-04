@@ -6,12 +6,39 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content padding>
+  <form [formGroup]="createEventForm" (submit)="createEvent()">
+    <ion-item>
+      <ion-label stacked>Nombre del evento</ion-label>
+      <ion-input type="text" placeholder="Nombre del evento" formControlName="eventNombre"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Fecha de Inicio</ion-label>
+      <ion-datetime formControlName="eventInicioDia" value="1990-02-19" placeholder="Selecciona Dia inicio"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label>Hora de Inicio</ion-label>
+      <ion-datetime formControlName="eventInicioHora" display-format="h:mm A" picker-format="h:mm A" value="1990-02-19T07:43Z"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label>Fecha de Finalizacion</ion-label>
+      <ion-datetime formControlName="eventTerminaDia" value="1990-02-19" placeholder="Selecciona Dia inicio"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label>Hora de Finalizacion</ion-label>
+      <ion-datetime formControlName="eventTerminaHora" display-format="h:mm A" picker-format="h:mm A" value="1990-02-19T07:43Z"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label>Descripcion del evento</ion-label>
+      <ion-textarea formControlName="eventDescripcion" type="text" placeholder="Descripcion del evento"></ion-textarea>
+    </ion-item>
+    <ion-button expand="block" type="submit" [disabled]="!createEventForm.valid">
+      Crear evento
+    </ion-button>
+  </form>
+
+
+
 
   <app-explore-container name="Tab 2 page"></app-explore-container>
 </ion-content>

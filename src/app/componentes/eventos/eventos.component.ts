@@ -1,4 +1,14 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+
+interface event{
+  id: string;
+  eventNombre: string;
+  eventInicioDia: string;
+  eventInicioHora: string;
+  eventTerminaDia: string;
+  eventTerminaHora: string;
+  eventDescripcion: string;
+}
 
 @Component({
   selector: 'app-eventos',
@@ -16,7 +26,7 @@ export class EventosComponent implements OnInit {
   }
 
   viewDescripcion: boolean = false;
-
+  @Input() e:event;
   @Output() messageEvent = new EventEmitter<any>();
 
   constructor() { }
@@ -26,7 +36,7 @@ export class EventosComponent implements OnInit {
   openDescription(){
     this.viewDescripcion = !this.viewDescripcion
     if(this.viewDescripcion){
-      this.messageEvent.emit(this.data)
+      this.messageEvent.emit(this.e)
     }
     else{
       this.messageEvent.emit(null)
